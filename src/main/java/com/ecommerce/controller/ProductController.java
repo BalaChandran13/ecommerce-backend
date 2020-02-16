@@ -4,7 +4,6 @@ package com.ecommerce.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,25 +29,21 @@ public class ProductController {
 	
 	@GetMapping
 	public List<Product> getProductDetails(@RequestParam("filter_type") String filterType, @RequestParam("filter_value") String filterValue) {
-		log.info(filterType);
-		log.info(filterValue);
 		Filter filter = new Filter();
 		filter.setFilterType(filterType);
 		filter.setFilterValue(filterValue);
-		List<Product> productDetails = productService.getProductDetails(filter);
+		List<Product> productDetails = productService.getProductDetails(filterType,filterValue);
 		return productDetails;
 	}
 	
 	@PostMapping
 	public Integer insertProductDetail(@RequestBody Product product) {
-		log.info("PostMEthod...");
 		Integer idValue = productService.insertProductDetail(product);
 		return idValue;
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deleteProductDetail(@PathVariable Integer id) {
-		log.info("DeleteMEthod...");
 		try {
 		productService.deleteProductDetail(id);
 		} catch (Exception e) {

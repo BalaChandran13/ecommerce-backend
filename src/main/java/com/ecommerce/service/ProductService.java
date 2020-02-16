@@ -2,12 +2,10 @@ package com.ecommerce.service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ecommerce.Filter;
 import com.ecommerce.entity.Product;
 import com.ecommerce.repository.ProductRepository;
 
@@ -17,23 +15,18 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	public List<Product> getProductDetails(Filter filter){
-		if(Objects.isNull(filter.getFilterType()) || (filter.getFilterValue().equals(""))) {
+	public List<Product> getProductDetails(String filterType, String filterValue){
+		if(Objects.isNull(filterType) || (filterValue.equals(""))) {
 			return productRepository.findAll();
-		}else if(filter.getFilterType().equalsIgnoreCase("Brand")) {
-			return productRepository.findByBrand(filter.getFilterValue());
-		}else if(filter.getFilterType().equalsIgnoreCase("Size")) {
-			return productRepository.findBySize(filter.getFilterValue());
-		}else if(filter.getFilterType().equalsIgnoreCase("Price")) {
-			return productRepository.findByPrice(Float.valueOf(filter.getFilterValue()));
+		}else if(filterType.equalsIgnoreCase("Brand")) {
+			return productRepository.findByBrand(filterValue);
+		}else if(filterType.equalsIgnoreCase("Size")) {
+			return productRepository.findBySize(filterValue);
+		}else if(filterType.equalsIgnoreCase("Price")) {
+			return productRepository.findByPrice(Float.valueOf(filterValue));
 		}else {
 			return productRepository.findAll();
 		}
-	}
-	
-	public Product getProductById(Product product){
-		Optional<Product> productDetatil = productRepository.findById(product.getId());
-		return productDetatil.orElse(new Product());
 	}
 	
 	public Integer insertProductDetail(Product product){
