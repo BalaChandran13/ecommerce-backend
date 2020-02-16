@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ecommerce.Filter;
 import com.ecommerce.entity.Product;
 import com.ecommerce.service.ProductService;
 
@@ -29,9 +28,6 @@ public class ProductController {
 	
 	@GetMapping
 	public List<Product> getProductDetails(@RequestParam("filter_type") String filterType, @RequestParam("filter_value") String filterValue) {
-		Filter filter = new Filter();
-		filter.setFilterType(filterType);
-		filter.setFilterValue(filterValue);
 		List<Product> productDetails = productService.getProductDetails(filterType,filterValue);
 		return productDetails;
 	}

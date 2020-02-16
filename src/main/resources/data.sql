@@ -10,8 +10,8 @@ price float(11) NOT NULL,
 PRIMARY KEY(id)
 );
 
-insert into product (name, brand, size, seller, price) values ('Pant', 'Raymond', 'L', 'BalaMurali', 1000);
-insert into product (name, brand, size, seller, price) values ('Sock', 'Nike', 'FS', 'Sethu', 2000);
-insert into product (name, brand, size, seller, price) values ('Pant', 'Raymond', 'L', 'BalaMurali', 3000);
-insert into product (name, brand, size, seller, price) values ('Cap', 'Adidas', 'FS', 'Prabha', 2000.50);
-insert into product (name, brand, size, seller, price) values ('Shirt', 'Tommy', 'M', 'Chandru', 1500.75);
+insert into product (name, brand, size, seller, price) values ('Pant', 'Raymond', 'L', 'Jack', 1000);
+insert into product (name, brand, size, seller, price) values ('Sock', 'Nike', 'FS', 'Chandru', 2000);
+insert into product (name, brand, size, seller, price) values ('Pant', 'Raymond', 'L', 'Murali', 1000);
+insert into product (name, brand, size, seller, price) values ('Cap', 'Adidas', 'FS', 'Bala', 500);
+insert into product (name, brand, size, seller, price) values ('Shirt', 'Tommy', 'M', 'Micheal', 1500);
