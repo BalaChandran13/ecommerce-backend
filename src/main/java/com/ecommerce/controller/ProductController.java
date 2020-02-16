@@ -21,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin(origins = "http://ecommerceproduct-frontend.herokuapp.com/")
 @Slf4j
 public class ProductController {
 	
