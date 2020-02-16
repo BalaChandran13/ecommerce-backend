@@ -3,10 +3,11 @@ package com.ecommerce.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.ecommerce.entity.Product;
 import com.ecommerce.repository.ProductRepository;
 
+@SpringBootTest
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ProductService.class)
 public class ProductServiceTest {
