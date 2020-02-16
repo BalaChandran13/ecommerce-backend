@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,14 +41,19 @@ public class ProductController {
 	
 	@PostMapping
 	public Integer insertProductDetail(@RequestBody Product product) {
+		log.info("PostMEthod...");
 		Integer idValue = productService.insertProductDetail(product);
 		return idValue;
 	}
 	
-	@DeleteMapping
-	public Boolean deleteProductDetail(Integer product) {
-		productService.deleteProductDetail(product);
-		return true;
+	@DeleteMapping("/{id}")
+	public void deleteProductDetail(@PathVariable Integer id) {
+		log.info("DeleteMEthod...");
+		try {
+		productService.deleteProductDetail(id);
+		} catch (Exception e) {
+			log.error("No such id");
+		}
 	}
 	
 }
